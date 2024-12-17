@@ -2,4 +2,4 @@
   hosts: all
   become: true
   role:
-    name: {{app_name}}
+    name: "{{app_name}}"
