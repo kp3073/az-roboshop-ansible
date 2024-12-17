@@ -16,7 +16,7 @@
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
     dest: /tmp/frontend.zip
 
-- name: Copy roboshop.conf
+- name: Copy roboshop conf
   ansible.builtin.template:
     - src: roboshop.conf
     - dest: /etc/nginx/default.d/roboshop.conf
