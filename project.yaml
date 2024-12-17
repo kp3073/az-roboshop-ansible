@@ -1,0 +1,5 @@
+- name: RoboShop Project Setup
+  hosts: all
+  become: true
+  role:
+    name: {{app_name}}
