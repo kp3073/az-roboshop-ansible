@@ -15,6 +15,7 @@
   ansible.builtin.unarchive:
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
     dest: /tmp/frontend.zip
+    remote_src: true
 
 - name: Copy roboshop conf
   ansible.builtin.template:
