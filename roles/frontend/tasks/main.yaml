@@ -9,6 +9,11 @@
     name: nginx
     state: installed
     
+- name: Copy nginx conf
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    
 - name: Remove Default Content of Nginx
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -25,10 +30,6 @@
     dest: /usr/share/nginx/html
     remote_src: true
 
-- name: Copy nginx conf
-  ansible.builtin.template:
-     src: nginx.conf
-     dest: vim /etc/nginx/nginx.conf
 
 - name: restart nginx service
   ansible.builtin.systemd:
