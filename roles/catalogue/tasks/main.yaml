@@ -34,12 +34,11 @@
     src: catalogue.service
     dest: /etc/systemd/system/catalogue.service
     
-- name: Start Catalogue Service
-  ansible.builtin.systemd:
-      name: catalogue
-      state: restarted
-      enabled: yes
-      daemon_reload: yes
+- name: Import systemd service
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: systemd
+    
 
 - name: Disable NodeJs older version
   ansible.builtin.shell: dnf install mongodb-mongosh -y
