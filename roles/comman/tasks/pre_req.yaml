@@ -1,9 +1,0 @@
-- name: Add the app user
-  ansible.builtin.user:
-    name: roboshop
-
-- name: load cleanup old content
-  ansible.builtin.include_tasks: cleanup_old_content.yaml
-
-- name: Download app content
-  ansible.builtin.include_tasks: download_app.yaml 

@@ -1,0 +1,3 @@
+component: cart
+app_path: /app
+is_schema_needed: false

@@ -1,0 +1,4 @@
+component: catalogue
+app_path: /app
+is_schema_needed: true
+schema_type: mongodb

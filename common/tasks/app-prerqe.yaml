@@ -1,0 +1,11 @@
+- name: Add Application User
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Load App clean up tasks
+  ansible.builtin.import_tasks:
+    file: app_content_cleanup.yaml
+
+- name: Donwload APP
+  ansible.builtin.import_tasks:
+    file: download_app_content.yaml

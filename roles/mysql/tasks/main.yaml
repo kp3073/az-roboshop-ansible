@@ -1,4 +1,0 @@
-- name: install MySQL
-  ansible.builtin.yum:
-    name: mysql-server
-    state: installed

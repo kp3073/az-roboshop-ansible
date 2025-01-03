@@ -1,0 +1,4 @@
+app_path: /app
+component: user
+schema_type: mongodb
+is_schema_needed: true

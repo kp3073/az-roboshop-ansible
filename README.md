@@ -1,1 +1,1 @@
-# az-roboshop-ansible
+# roboshop-ansible

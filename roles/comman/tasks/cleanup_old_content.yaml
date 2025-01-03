@@ -1,9 +1,0 @@
-- name: Create the application directory
-  ansible.builtin.file:
-    path: "{{app_path}}"
-    state: absent
-    
-- name: Create the application directory
-  ansible.builtin.file:
-    path: "{{app_path}}"
-    state: directory

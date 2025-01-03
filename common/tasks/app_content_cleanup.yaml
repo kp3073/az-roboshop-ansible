@@ -1,0 +1,9 @@
+- name: Clean Up Old Application Content
+  ansible.builtin.file:
+    path: "{{app_path}}"
+    state: absent
+
+- name: Create application directiory
+  ansible.builtin.file:
+    path: "{{app_path}}"
+    state: directory
