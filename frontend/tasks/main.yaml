@@ -46,12 +46,12 @@
     dest: /etc/nginx/nginx.conf
 
 
-- name: Include App Pre-clean tasks
+- name: Include download Pre-clean tasks
   ansible.builtin.import_role:
     name: common
     tasks_from: download_app_content
 
-- name: Include App Pre-clean tasks
+- name: service start
   ansible.builtin.import_task:
     name: common
-    tasks_from: systemd
+    tasks_from: systemd.yaml
