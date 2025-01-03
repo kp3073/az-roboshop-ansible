@@ -34,24 +34,30 @@
   ansible.builtin.dnf:
     name: nginx
     state: installed
-    
-- name: Include App Pre-clean tasks
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: app_content_cleanup
-    
+
 - name: Copy Nginx config file
   ansible.builtin.template:
-    src: roboshop.conf
-    dest: /etc/nginx/roboshop.conf
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
+- name: Remove nginx directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
 
-- name: Include download Pre-clean tasks
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: download_app_content
+- name: Created nginx directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
 
-- name: service start
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: systemd
+- name: Download and extract frontend content
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+- name: Start Nginx service
+  ansible.builtin.systemd_service:
+    state: restarted
+    name: nginx
+    enabled: true
