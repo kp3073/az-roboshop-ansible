@@ -52,6 +52,6 @@
     tasks_from: download_app_content
 
 - name: service start
-  ansible.builtin.import_task:
+  ansible.builtin.import_role:
     name: common
-    tasks_from: systemd.yaml
+    tasks_from: systemd
