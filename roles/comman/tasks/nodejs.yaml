@@ -1,0 +1,18 @@
+- name: Disable old Nodejs and re enable 20
+  ansible.builtin.shell: dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
+  
+- name: Install NodeJS
+  ansible.builtin.dnf:
+    name: nodejs
+    state: installed
+
+- name: Load app prerequisites
+  ansible.builtin.import_tasks: pre_req.yaml
+
+- name: Install Dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: SystemD setup
+  ansible.builtin.import_tasks: systemd.yaml

@@ -14,26 +14,15 @@
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
     
-- name: Remove Default Content of Nginx
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
+- name: clean up app code
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: cleanup_up_content
 
-- name: Remove Default Content of Nginx
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: directory
+- name: download app code
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: download_app
+    
 
-- name: Download and Extrect app code
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-    dest: /usr/share/nginx/html
-    remote_src: true
-
-
-- name: restart nginx service
-  ansible.builtin.systemd_service:
-    name: nginx
-    state: restarted
-    enabled: true
       
