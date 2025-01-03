@@ -52,6 +52,6 @@
     tasks_from: download_app_content
 
 - name: Include App Pre-clean tasks
-  ansible.builtin.import_role:
+  ansible.builtin.import_task:
     name: common
     tasks_from: systemd
