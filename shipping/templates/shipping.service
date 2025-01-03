@@ -3,8 +3,8 @@ Description=Shipping Service
 
 [Service]
 User=roboshop
-Environment=CART_ENDPOINT={{ lookup('amazon.aws.aws_ssm', '{{env}}.roboshop.shipping.CART_Server', region='us-east-1' ) }}
-Environment=DB_HOST={{ lookup('amazon.aws.aws_ssm', '{{env}}.roboshop.shipping.DB_HOST', region='us-east-1' ) }}
+Environment=CART_ENDPOINT=cart-dev.cloudaws.shop:8080
+Environment=DB_HOST=mysql-dev.cloudaws.shop
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
 
